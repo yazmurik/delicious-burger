@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './components/Login';
 import Order from './components/Order';
+import Summary from './components/Summary'
 import logo from './burger-logo.png';
 import './App.css';
 
