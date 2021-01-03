@@ -1,5 +1,6 @@
 import React from 'react';
-import Login from './components/Login'
+import Login from './components/Login';
+import Order from './components/Order';
 import logo from './burger-logo.png';
 import './App.css';
 
@@ -9,13 +10,22 @@ class App extends React.Component {
     this.state = {
       username:'',
       password:'',
+      patty:'',
+      amount: '',
+      doneness: '',
+      topping: '',
+      cheese: '',
+      bun: '',
+      sauce: '',
+      extra: '',
       loggedIn:false
     };
     this.usercheck = this.usercheck.bind(this);
     this.setUserName = this.setUserName.bind(this);
     this.setPassword = this.setPassword.bind(this);
+    this.setInput = this.setInput.bind(this);
   }
-  
+
   usercheck(){
     if (this.state.username === "abc" && this.state.password === "123" ){
       this.setState({
@@ -38,11 +48,16 @@ class App extends React.Component {
     })
   }
 
-  render(){
+  setInput(property, value) {
+    this.setState({
+      [property]: value
+    })
+  }
 
+  render(){
     let currComponent;
     if(this.state.loggedIn) {
-      currComponent = <h1>You are successfully Logged in</h1>
+      currComponent = <Order inputFunction={this.setInput}/>
     } else {
       currComponent = <Login userName={this.setUserName}
       userpassword={this.setPassword} checkUser={this.usercheck}/>
